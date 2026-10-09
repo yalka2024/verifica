@@ -1,0 +1,333 @@
+{
+  "kind": "kubild-verification-certificate",
+  "certificate_version": "1",
+  "generatedAt": "2026-10-09T19:09:15.242Z",
+  "platform": {
+    "name": "Verifica",
+    "archetype": "saas-platform",
+    "industry": "cybersecurity"
+  },
+  "generator": {
+    "version": "0.2.1",
+    "git_sha": "6bfe8f2",
+    "spec_sha256": "a96fd55ae67514bfa8dd309685274dda8ec9605963bcf23e25932c96267e313c"
+  },
+  "verified": "Final source passed its build gate but product readiness is scaffold_only; compilation alone is not product completion.",
+  "readiness": "scaffold_only",
+  "gates": [
+    {
+      "name": "build:dashboard:audit-dev",
+      "status": "warning",
+      "detail": "devDependency advisories (not shipped in the runtime image): braces, chokidar, fast-glob, micromatch, tailwindcss"
+    },
+    {
+      "name": "build:dashboard:audit-high",
+      "status": "ok"
+    },
+    {
+      "name": "build:dashboard:build",
+      "status": "ok"
+    },
+    {
+      "name": "build:dashboard:install",
+      "status": "ok"
+    },
+    {
+      "name": "build:dashboard:lock",
+      "status": "ok"
+    },
+    {
+      "name": "build:dashboard:lockfile",
+      "status": "ok"
+    },
+    {
+      "name": "build:server:audit-dev",
+      "status": "warning",
+      "detail": "devDependency advisories (not shipped in the runtime image): @jest/console, @jest/core, @jest/environment, @jest/expect, @jest/fake-timers, @jest/globals, @jest/reporters, @jest/test-result, @jest/test-sequencer, @jest/transform, babel-jest, braces, create-jest, expect, jest, jest-circus, jest-cli, jest-config, jest-environment-node, jest-haste-map, jest-message-util, jest-resolve, jest-resolve-dependencies, jest-runner, jest-runtime, jest-snapshot, jest-watcher, micromatch"
+    },
+    {
+      "name": "build:server:audit-high",
+      "status": "ok"
+    },
+    {
+      "name": "build:server:coverage",
+      "status": "ok"
+    },
+    {
+      "name": "build:server:eval",
+      "status": "ok"
+    },
+    {
+      "name": "build:server:install",
+      "status": "ok"
+    },
+    {
+      "name": "build:server:lock",
+      "status": "ok"
+    },
+    {
+      "name": "build:server:lockfile",
+      "status": "ok"
+    },
+    {
+      "name": "build:server:migration",
+      "status": "ok",
+      "detail": "versioned migration present"
+    },
+    {
+      "name": "build:server:runtime",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:dashboard:audit-dev",
+      "status": "warning",
+      "detail": "devDependency advisories (not shipped in the runtime image): braces, chokidar, fast-glob, micromatch, tailwindcss"
+    },
+    {
+      "name": "post-finish:dashboard:audit-high",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:dashboard:build",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:dashboard:install",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:dashboard:lock",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:dashboard:lockfile",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:server:audit-dev",
+      "status": "warning",
+      "detail": "devDependency advisories (not shipped in the runtime image): @jest/console, @jest/core, @jest/environment, @jest/expect, @jest/fake-timers, @jest/globals, @jest/reporters, @jest/test-result, @jest/test-sequencer, @jest/transform, babel-jest, braces, create-jest, expect, jest, jest-circus, jest-cli, jest-config, jest-environment-node, jest-haste-map, jest-message-util, jest-resolve, jest-resolve-dependencies, jest-runner, jest-runtime, jest-snapshot, jest-watcher, micromatch"
+    },
+    {
+      "name": "post-finish:server:audit-high",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:server:coverage",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:server:eval",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:server:install",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:server:lock",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:server:lockfile",
+      "status": "ok"
+    },
+    {
+      "name": "post-finish:server:migration",
+      "status": "ok",
+      "detail": "versioned migration present"
+    },
+    {
+      "name": "post-finish:server:runtime",
+      "status": "ok"
+    },
+    {
+      "name": "product-completion-gate",
+      "status": "warning",
+      "detail": "readiness=scaffold_only; completion=10%; missing essential tools=bilingual-ui, channel-matcher, doj-roster-checker, statutory-rules-checker; workflow stubs=none"
+    },
+    {
+      "name": "validate-agent-gateway",
+      "status": "ok"
+    },
+    {
+      "name": "validate-agents-tools",
+      "status": "ok"
+    },
+    {
+      "name": "validate-ai-economics",
+      "status": "ok"
+    },
+    {
+      "name": "validate-compliance-vertical",
+      "status": "ok"
+    },
+    {
+      "name": "validate-data-products",
+      "status": "ok"
+    },
+    {
+      "name": "validate-design-intelligence",
+      "status": "ok"
+    },
+    {
+      "name": "validate-framework-coverage",
+      "status": "ok"
+    },
+    {
+      "name": "validate-governance",
+      "status": "ok"
+    },
+    {
+      "name": "validate-growth",
+      "status": "ok"
+    },
+    {
+      "name": "validate-marketplace",
+      "status": "ok"
+    },
+    {
+      "name": "validate-operations",
+      "status": "ok"
+    },
+    {
+      "name": "validate-pricing",
+      "status": "ok"
+    },
+    {
+      "name": "validate-prisma",
+      "status": "ok"
+    },
+    {
+      "name": "validate-required-clauses",
+      "status": "ok"
+    },
+    {
+      "name": "validate-schema",
+      "status": "ok"
+    },
+    {
+      "name": "validate-security",
+      "status": "ok"
+    },
+    {
+      "name": "validate-spec-fidelity",
+      "status": "ok"
+    },
+    {
+      "name": "validate-syntax",
+      "status": "ok"
+    },
+    {
+      "name": "validate-tenancy",
+      "status": "ok"
+    },
+    {
+      "name": "validate-trust",
+      "status": "ok"
+    },
+    {
+      "name": "validate-trust-portal",
+      "status": "ok"
+    },
+    {
+      "name": "validate-vertical-pack",
+      "status": "ok"
+    },
+    {
+      "name": "validate-workflows",
+      "status": "ok"
+    },
+    {
+      "name": "security-scan (static)",
+      "status": "ok",
+      "detail": "high 0, medium 0, low 0"
+    }
+  ],
+  "tools": {
+    "implemented": [
+      "anomaly-detector",
+      "forecast",
+      "knowledge-search",
+      "risk-scorer",
+      "scorer",
+      "vuln-prioritizer"
+    ],
+    "credentialGated": [],
+    "honestStubs": [
+      "bilingual-ui",
+      "channel-matcher",
+      "doj-roster-checker",
+      "statutory-rules-checker"
+    ]
+  },
+  "workflows": {
+    "implemented": [],
+    "partial": [
+      "verification-process"
+    ],
+    "honestStubs": []
+  },
+  "product_completion": {
+    "readiness": "scaffold_only",
+    "score": 10,
+    "essentialTools": [
+      "bilingual-ui",
+      "channel-matcher",
+      "doj-roster-checker",
+      "statutory-rules-checker"
+    ],
+    "declaredTools": [
+      "bilingual-ui",
+      "channel-matcher",
+      "doj-roster-checker",
+      "statutory-rules-checker"
+    ],
+    "missingDeclaredTools": [],
+    "missingEssentialTools": [
+      "bilingual-ui",
+      "channel-matcher",
+      "doj-roster-checker",
+      "statutory-rules-checker"
+    ],
+    "tools": {
+      "implemented": [
+        "anomaly-detector",
+        "forecast",
+        "knowledge-search",
+        "risk-scorer",
+        "scorer",
+        "vuln-prioritizer"
+      ],
+      "credentialGated": [],
+      "honestStubs": [
+        "bilingual-ui",
+        "channel-matcher",
+        "doj-roster-checker",
+        "statutory-rules-checker"
+      ]
+    },
+    "workflows": {
+      "implemented": [],
+      "partial": [
+        "verification-process"
+      ],
+      "honestStubs": []
+    },
+    "gates": {
+      "build": true,
+      "runtime": true,
+      "workflow": false,
+      "integrations": true
+    }
+  },
+  "notChecked": [
+    "Business-logic correctness: whether the domain rules match YOUR policies, contracts, or regulator.",
+    "Authorization intent: the gates prove the declared policy is enforced, not that the policy you declared is the right one.",
+    "Load, performance, and resilience under production traffic.",
+    "Dependency CVEs, container image contents, and the infrastructure you deploy onto.",
+    "Whether operational controls (backups, on-call, scanning cadence) are actually operated — see server/trust/security-overview.md.",
+    "Penetration testing and any third-party certification (SOC 2, ISO 27001, ATO)."
+  ],
+  "attestation": null
+}

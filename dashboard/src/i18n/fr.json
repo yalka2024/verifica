@@ -1,0 +1,66 @@
+{
+  "app": {
+    "title": "Verifica",
+    "skipToContent": "Aller au contenu principal",
+    "loading": "Chargement…",
+    "error": "Une erreur est survenue",
+    "retry": "Réessayer"
+  },
+  "auth": {
+    "signIn": "Se connecter",
+    "signOut": "Se déconnecter",
+    "register": "Créer un compte",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "mfaCode": "Code à double facteur",
+    "forgotPassword": "Mot de passe oublié ?",
+    "fullName": "Nom complet",
+    "pleaseWait": "Veuillez patienter...",
+    "noAccount": "Pas encore de compte ? S'inscrire",
+    "haveAccount": "Déjà un compte ? Se connecter",
+    "signInForm": "Formulaire de connexion",
+    "createAccountForm": "Formulaire de création de compte",
+    "privateBeta": "🔒 Bêta privée — Accès autorisé uniquement",
+    "setupNotice": "Cette instance n'a pas encore été configurée.",
+    "runSetupWizard": "Lancer l'assistant de configuration →"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "settings": "Paramètres",
+    "apiKeys": "Clés d'API",
+    "billing": "Facturation",
+    "assistant": "Assistant IA",
+    "data": "Données",
+    "tools": "Outils",
+    "guidedFlows": "Parcours guidés",
+    "trust": "Confiance",
+    "tenants": "Locataires",
+    "aiEconomics": "Économie de l'IA",
+    "aiEvaluations": "Évaluations IA",
+    "growth": "Croissance",
+    "dataProducts": "Produits de données",
+    "marketplace": "Marché",
+    "operations": "Opérations",
+    "status": "Statut",
+    "trustPortal": "Portail de confiance",
+    "governance": "Gouvernance",
+    "pricing": "Tarifs",
+    "helpCentre": "Centre d'aide"
+  },
+  "actions": {
+    "create": "Créer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "confirmDelete": "Voulez-vous vraiment supprimer cet élément ?"
+  },
+  "table": {
+    "empty": "Aucun élément",
+    "loading": "Chargement des lignes…",
+    "loadMore": "Charger plus"
+  },
+  "common": {
+    "welcome": "Bienvenue, {name}"
+  }
+}
+

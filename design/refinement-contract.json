@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "1.0",
+  "rule": "Each pass may modify only its declared concerns and must emit a patch plus evaluation report; architecture and product behavior are immutable.",
+  "passes": [
+    {
+      "id": "typography",
+      "allowed": [
+        "font tokens",
+        "type scale",
+        "line height"
+      ]
+    },
+    {
+      "id": "spacing",
+      "allowed": [
+        "spacing tokens",
+        "layout gaps"
+      ]
+    },
+    {
+      "id": "hierarchy",
+      "allowed": [
+        "visual emphasis",
+        "content grouping"
+      ]
+    },
+    {
+      "id": "mobile",
+      "allowed": [
+        "responsive rules",
+        "safe areas"
+      ]
+    },
+    {
+      "id": "states",
+      "allowed": [
+        "empty",
+        "loading",
+        "error"
+      ]
+    },
+    {
+      "id": "forms",
+      "allowed": [
+        "labels",
+        "validation presentation"
+      ]
+    },
+    {
+      "id": "motion",
+      "allowed": [
+        "transition tokens",
+        "reduced-motion equivalents"
+      ]
+    },
+    {
+      "id": "accessibility",
+      "allowed": [
+        "semantics",
+        "focus",
+        "contrast"
+      ]
+    },
+    {
+      "id": "consistency",
+      "allowed": [
+        "token adoption"
+      ]
+    },
+    {
+      "id": "performance",
+      "allowed": [
+        "asset and render optimization"
+      ]
+    },
+    {
+      "id": "identity",
+      "allowed": [
+        "product-specific visual elements"
+      ]
+    },
+    {
+      "id": "anti-generic",
+      "allowed": [
+        "prohibited-pattern removal"
+      ]
+    }
+  ]
+}

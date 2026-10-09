@@ -1,0 +1,245 @@
+{
+  "workflows": {
+    "steps": [
+      "User submits data",
+      "Redact PII",
+      "Process through AI models",
+      "Run deterministic checks",
+      "Provide evidence-backed verdict"
+    ],
+    "name": "Verification Process"
+  },
+  "tools": [
+    {
+      "name": "Bilingual UI",
+      "description": "User interface supporting Spanish and English"
+    },
+    {
+      "name": "DOJ Roster Checker",
+      "description": "Tool to verify against DOJ EOIR roster"
+    },
+    {
+      "name": "Channel Matcher",
+      "description": "Tool to match contact channels with official records"
+    },
+    {
+      "name": "Statutory Rules Checker",
+      "description": "Tool to apply statutory rules for verification"
+    }
+  ],
+  "core_entity_plural": "verifications",
+  "compliance": {
+    "frameworks": [
+      "GDPR",
+      "CCPA"
+    ]
+  },
+  "name": "Verifica",
+  "entities": [
+    {
+      "name": "Attorney",
+      "fields": [
+        {
+          "required": true,
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "required": true,
+          "name": "bar_number",
+          "type": "string"
+        },
+        {
+          "required": true,
+          "name": "state",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "DOJAccreditedRepresentative",
+      "fields": [
+        {
+          "required": true,
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "required": true,
+          "name": "accreditation_expiration",
+          "type": "datetime"
+        },
+        {
+          "required": true,
+          "name": "organization",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Notario",
+      "fields": [
+        {
+          "required": true,
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "required": true,
+          "name": "advertising_language",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "GovernmentAgency",
+      "fields": [
+        {
+          "required": true,
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "required": true,
+          "name": "official_channels",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ImmigrationOrganization",
+      "fields": [
+        {
+          "required": true,
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "required": true,
+          "name": "recognition_expiration",
+          "type": "datetime"
+        },
+        {
+          "required": true,
+          "name": "address",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "spec_version": "0.3.0",
+  "product_validation": {
+    "retention_event": "User returns for multiple verifications",
+    "problem_hypothesis": "Users need to verify immigration help authenticity before sharing sensitive information.",
+    "experiments": [
+      "A/B test UI language toggle",
+      "Test different evidence presentation formats"
+    ],
+    "ideal_customer_profile": "Immigrant families and international students seeking immigration help verification",
+    "message_variants": [
+      "Verify your immigration help now",
+      "Check if your immigration advisor is legitimate"
+    ],
+    "activation_event": "User submits a verification request",
+    "interview_questions": [
+      "What type of immigration help are you seeking?",
+      "Have you encountered suspicious offers before?"
+    ],
+    "paid_acquisition_status": "experiment",
+    "competitors": [
+      "LegalZoom",
+      "ImmigrationHelp.org"
+    ]
+  },
+  "summary": "A bilingual web app that verifies the authenticity of individuals offering immigration help before users pay or share documents.",
+  "industry": "cybersecurity",
+  "archetype": "saas-platform",
+  "core_entity": "verification",
+  "design": {
+    "accessibility_constraints": [
+      "color contrast",
+      "screen reader support"
+    ],
+    "brand_character": "trustworthy and secure",
+    "capability_pack": "industrial-utilitarian",
+    "audience": "immigrant families, international students, H-1B workers",
+    "primary_job": "verify immigration help authenticity"
+  },
+  "agents": [
+    {
+      "name": "Claude",
+      "role": "AI model for text extraction and explanation"
+    },
+    {
+      "name": "Jev",
+      "role": "AI model for decision-making"
+    },
+    {
+      "name": "CustomClassifier",
+      "role": "AI model for scam probability assessment"
+    }
+  ],
+  "roles": [
+    {
+      "name": "admin",
+      "description": "Platform administrator with full access.",
+      "can_write": true
+    },
+    {
+      "name": "user",
+      "description": "Regular user submitting verification requests.",
+      "can_write": false
+    },
+    {
+      "name": "viewer",
+      "description": "Read-only access for viewing verification results.",
+      "can_write": false
+    }
+  ],
+  "autonomy_level": "supervised",
+  "knowledge_base": true,
+  "integrations": [
+    "splunk",
+    "crowdstrike",
+    "tenable",
+    "okta",
+    "jira"
+  ],
+  "kpis": [
+    "mttd_minutes",
+    "mttr_minutes",
+    "patch_sla_pct",
+    "fp_rate_pct"
+  ],
+  "data_model_extensions": [
+    {
+      "model": "Alert",
+      "fields": [
+        "sourceSystem:String",
+        "severity:String",
+        "status:String",
+        "raisedAt:DateTime"
+      ]
+    },
+    {
+      "model": "Incident",
+      "fields": [
+        "title:String",
+        "severity:String",
+        "status:String",
+        "openedAt:DateTime",
+        "resolvedAt:DateTime?"
+      ]
+    },
+    {
+      "model": "Vulnerability",
+      "fields": [
+        "cve:String",
+        "cvss:Float",
+        "epss:Float?",
+        "assetId:String",
+        "status:String"
+      ]
+    }
+  ]
+}

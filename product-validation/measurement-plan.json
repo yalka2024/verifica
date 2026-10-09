@@ -1,0 +1,6 @@
+{
+  "activation_event": "User submits a verification request",
+  "retention_event": "User returns for multiple verifications",
+  "paid_acquisition_status": "experiment",
+  "go_no_go": "do not scale paid acquisition"
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "javascript_kb_gzip": 200,
+  "css_kb_gzip": 60,
+  "image_kb_each": 300,
+  "font_files": 4,
+  "cls": 0.1,
+  "lcp_ms": 2500,
+  "inp_ms": 200
+}

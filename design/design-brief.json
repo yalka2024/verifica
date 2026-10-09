@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0",
+  "accessibility_constraints": [
+    "color contrast",
+    "screen reader support"
+  ],
+  "audience": "immigrant families, international students, H-1B workers",
+  "brand_character": "trustworthy and secure",
+  "capability_pack": "industrial-utilitarian",
+  "primary_job": "verify immigration help authenticity",
+  "capability_pack_version": "1.0.0"
+}

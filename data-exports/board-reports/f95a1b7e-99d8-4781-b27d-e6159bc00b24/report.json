@@ -1,0 +1,246 @@
+{
+  "id": "f95a1b7e-99d8-4781-b27d-e6159bc00b24",
+  "period": "2026-Q4",
+  "generatedAt": "2026-10-09T19:08:27.501Z",
+  "requestedBy": "fixture-user",
+  "bounds": {
+    "from": "2026-10-01T00:00:00.000Z",
+    "to": "2027-01-01T00:00:00.000Z"
+  },
+  "sections": {
+    "trust": {
+      "platform": "Verifica",
+      "industry": "cybersecurity",
+      "version": "1.0.0",
+      "generatedAt": "2026-10-09T19:08:27.503Z",
+      "compliance": {
+        "frameworks": [
+          "GDPR",
+          "CCPA"
+        ],
+        "attested": false,
+        "last_audit_date": null,
+        "next_audit_date": null
+      },
+      "security": {
+        "controls_count": 0,
+        "controls_declared": 18,
+        "controls_attested": false,
+        "mfa_supported": true,
+        "audit_log": true,
+        "sso_supported": false,
+        "encryption_in_transit": null,
+        "encryption_at_rest": null,
+        "data_residency": [],
+        "sbom": null,
+        "attestations": []
+      },
+      "subprocessors": {
+        "count": 0,
+        "list": []
+      },
+      "data_handling": {
+        "retention_policies": [
+          {
+            "data_class": "User account",
+            "default_days": 2555,
+            "regulatory_floor_days": 0,
+            "deletion_method": "soft+hard after grace"
+          },
+          {
+            "data_class": "Authentication logs",
+            "default_days": 365,
+            "regulatory_floor_days": 90,
+            "deletion_method": "rotate"
+          },
+          {
+            "data_class": "Application audit log",
+            "default_days": 365,
+            "regulatory_floor_days": 365,
+            "deletion_method": "rotate (immutable for window)"
+          },
+          {
+            "data_class": "Backups",
+            "default_days": 30,
+            "regulatory_floor_days": 0,
+            "deletion_method": "rolling"
+          },
+          {
+            "data_class": "Customer-uploaded files",
+            "default_days": 2555,
+            "regulatory_floor_days": 0,
+            "deletion_method": "tenant-controlled, hard-delete on request"
+          },
+          {
+            "data_class": "Telemetry / metrics",
+            "default_days": 90,
+            "regulatory_floor_days": 0,
+            "deletion_method": "rotate"
+          },
+          {
+            "data_class": "Marketing email lists",
+            "default_days": 730,
+            "regulatory_floor_days": 0,
+            "deletion_method": "double-opt-in, hard-delete on unsubscribe"
+          }
+        ],
+        "deletion_sla_days": 30,
+        "export_formats": [
+          "JSON",
+          "CSV"
+        ],
+        "gdpr_dsr_endpoint": "/api/privacy/dsr"
+      },
+      "incident_response": {
+        "notification_sla_hours": 72,
+        "contact": null
+      },
+      "documents": [
+        {
+          "name": "compliance.json",
+          "size_bytes": 606,
+          "sha256": "40c33075467d1cb8fe7100ef102f1fd7e0dd8cb0aa5caf0c0951152fa69372fc",
+          "mime": "application/json"
+        },
+        {
+          "name": "dpa-template.md",
+          "size_bytes": 3164,
+          "sha256": "914b54c011152e8c56e348ed6d53447d6fc804599d0315f45b02319a4a3cd2e8",
+          "mime": "text/markdown"
+        },
+        {
+          "name": "privacy-template.md",
+          "size_bytes": 7222,
+          "sha256": "62bb3466c7d707fc1b86b4907510b62859d5675b7a1ffa3b708cd4b89856af4d",
+          "mime": "text/markdown"
+        },
+        {
+          "name": "retention-schedule.json",
+          "size_bytes": 1433,
+          "sha256": "c1373137525c6cbc96c37812cbd5a632c737417ece616554131acbd4a7e1a936",
+          "mime": "application/json"
+        },
+        {
+          "name": "ropa-template.md",
+          "size_bytes": 13183,
+          "sha256": "855351913f2abcfc1cb4164d992bb323498ae614977cc6df406c3b4807e44301",
+          "mime": "text/markdown"
+        },
+        {
+          "name": "security-controls.json",
+          "size_bytes": 3856,
+          "sha256": "509c73f2d5d2d8e5b18a6f225d6f101da73b137996e5a8a27186010e02c18642",
+          "mime": "application/json"
+        },
+        {
+          "name": "security-overview.md",
+          "size_bytes": 4406,
+          "sha256": "99c9b18055c754ed42c85e01d7915fcffb700f1b7d8367bdc924b6669f504765",
+          "mime": "text/markdown"
+        },
+        {
+          "name": "subprocessors.json",
+          "size_bytes": 3114,
+          "sha256": "4a6b38c7c333b2b67b7e0b645d6d33d43c35f319e9aaa89aa129cbb8a4de3bf3",
+          "mime": "application/json"
+        },
+        {
+          "name": "tos-template.md",
+          "size_bytes": 7833,
+          "sha256": "997a3b93a9b1fecb61dd9d3bc48ab2bf40307ed39ef96391776b7e41e01fa379",
+          "mime": "text/markdown"
+        }
+      ]
+    },
+    "slo": [
+      {
+        "id": "api_availability",
+        "kind": "availability",
+        "target": 0.999,
+        "windowDays": 28,
+        "total": 0,
+        "good": 0,
+        "bad": 0,
+        "sli": 1,
+        "healthy": true,
+        "errorBudget": {
+          "allowedBad": 0,
+          "usedBad": 0,
+          "remaining": 0,
+          "percentUsed": 0
+        },
+        "description": "Public API HTTP success rate (status < 500)."
+      },
+      {
+        "id": "api_latency_p95",
+        "kind": "latency_p95",
+        "target": 0.95,
+        "target_ms": 500,
+        "windowDays": 28,
+        "sampleCount": 0,
+        "totalBuckets": 0,
+        "breachBuckets": 0,
+        "sli": 1,
+        "healthy": true,
+        "errorBudget": {
+          "allowedBad": 0,
+          "usedBad": 0,
+          "remaining": 0,
+          "percentUsed": 0
+        },
+        "description": "95% of API requests complete in under 500 ms."
+      },
+      {
+        "id": "background_success",
+        "kind": "job_success",
+        "target": 0.995,
+        "windowDays": 28,
+        "total": 0,
+        "good": 0,
+        "bad": 0,
+        "sli": 1,
+        "healthy": true,
+        "errorBudget": {
+          "allowedBad": 0,
+          "usedBad": 0,
+          "remaining": 0,
+          "percentUsed": 0
+        },
+        "description": "Background job success rate (worker.js)."
+      }
+    ],
+    "incidents": {
+      "total": 0,
+      "open": 0,
+      "bySeverity": {}
+    },
+    "models": {
+      "total": 0,
+      "byStatus": {
+        "draft": 0,
+        "in_review": 0,
+        "approved": 0,
+        "retired": 0
+      },
+      "byRisk": {
+        "minimal": 0,
+        "limited": 0,
+        "high": 0,
+        "unacceptable": 0
+      }
+    },
+    "policies": {
+      "generatedAt": "2026-10-09T19:08:27.506Z",
+      "policies": []
+    },
+    "vendorKits": {
+      "pendingRequests": 0,
+      "approvedKits": 0
+    },
+    "tenants": {
+      "totalOrgs": 0,
+      "newOrgs": 0,
+      "subscriptionsByPlan": {}
+    }
+  }
+}

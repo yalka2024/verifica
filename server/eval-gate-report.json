@@ -1,0 +1,15 @@
+{
+  "generated": "2026-10-09T19:08:43.220Z",
+  "provider": "mock",
+  "summary": [
+    {
+      "suite": "smoke",
+      "score": 1,
+      "passed": 4,
+      "total": 4,
+      "failures": [],
+      "min": 0.9,
+      "ok": true
+    }
+  ]
+}

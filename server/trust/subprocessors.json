@@ -1,0 +1,62 @@
+{
+  "_TEMPLATE": "UNATTESTED — a TEMPLATE, not a disclosure. `candidate_subprocessors` lists vendors this platform CAN be configured to use; it does NOT assert that any of them process data for you today. Publishing this as-is would misrepresent your sub-processors to customers and regulators (GDPR Art. 28(2), CCPA service-provider terms). The operator MUST move the vendors actually configured in THIS deployment into `subprocessors`, then set attested=true with a name and date.",
+  "status": "template_unattested",
+  "attested": false,
+  "attested_by": null,
+  "attested_at": null,
+  "version": "0.0.0-template",
+  "subprocessors": [],
+  "candidate_subprocessors": [
+    {
+      "name": "Amazon Web Services (AWS)",
+      "used_when": "STORAGE_DRIVER=s3, or you host this platform on AWS",
+      "purpose": "Application hosting, object storage, managed databases",
+      "location": "US, EU (multi-region)",
+      "data_categories": ["customer data", "logs", "backups"],
+      "dpa_url": "https://aws.amazon.com/service-terms/",
+      "compliance_claimed_by_vendor": ["SOC 2 Type II", "ISO 27001", "ISO 27018", "HIPAA BAA available"]
+    },
+    {
+      "name": "Stripe, Inc.",
+      "used_when": "STRIPE_SECRET_KEY is set (billing enabled)",
+      "purpose": "Payment processing, subscription billing",
+      "location": "US",
+      "data_categories": ["billing email", "payment metadata", "invoice ledger"],
+      "dpa_url": "https://stripe.com/legal/dpa",
+      "compliance_claimed_by_vendor": ["PCI DSS Level 1", "SOC 1/2 Type II", "ISO 27001"]
+    },
+    {
+      "name": "SendGrid (Twilio)",
+      "used_when": "SMTP / SendGrid credentials are configured for transactional email",
+      "purpose": "Transactional email delivery",
+      "location": "US",
+      "data_categories": ["recipient email", "message body"],
+      "dpa_url": "https://www.twilio.com/legal/data-protection-addendum",
+      "compliance_claimed_by_vendor": ["SOC 2 Type II", "ISO 27001", "GDPR (SCCs)"]
+    },
+    {
+      "name": "Sentry (Functional Software, Inc.)",
+      "used_when": "SENTRY_DSN is set",
+      "purpose": "Application error tracking",
+      "location": "US, EU",
+      "data_categories": ["stack traces", "request metadata", "user id (pseudonymous)"],
+      "dpa_url": "https://sentry.io/legal/dpa/",
+      "compliance_claimed_by_vendor": ["SOC 2 Type II", "ISO 27001", "SCCs"]
+    },
+    {
+      "name": "GitHub, Inc. (Microsoft)",
+      "used_when": "you host this platform's source and CI/CD on GitHub",
+      "purpose": "Source control, container registry, CI/CD",
+      "location": "US, EU",
+      "data_categories": ["source code", "build logs", "container images"],
+      "dpa_url": "https://docs.github.com/en/site-policy/privacy-policies/github-data-protection-agreement",
+      "compliance_claimed_by_vendor": ["SOC 1/2 Type II", "ISO 27001", "FedRAMP Moderate"]
+    }
+  ],
+  "notification_policy": {
+    "_note": "A commitment the OPERATOR makes. Adjust to what you can actually honour before publishing.",
+    "advance_notice_days": 30,
+    "notification_channels": ["email", "in-app banner"]
+  }
+}
+

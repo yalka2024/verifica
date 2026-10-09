@@ -1,0 +1,509 @@
+{
+  "generated": "2026-10-09T19:04:42.416Z",
+  "results": [
+    {
+      "name": "validate-agents-tools",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-ai-economics",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-compliance-vertical",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-data-products",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-framework-coverage",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-governance",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-growth",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-marketplace",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-operations",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-pricing",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-prisma",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-required-clauses",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-schema",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-security",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-syntax",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-tenancy",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-trust",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-trust-portal",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-vertical-pack",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-workflows",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-design-intelligence",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-agent-gateway",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "validate-spec-fidelity",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:server:lock",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:server:lockfile",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:server:install",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:server:migration",
+      "status": "ok",
+      "exit_code": 0,
+      "reason": "versioned migration present"
+    },
+    {
+      "name": "build:server:audit-high",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:server:audit-dev",
+      "status": "warning",
+      "exit_code": 1,
+      "reason": "devDependency advisories (not shipped in the runtime image): @jest/console, @jest/core, @jest/environment, @jest/expect, @jest/fake-timers, @jest/globals, @jest/reporters, @jest/test-result, @jest/test-sequencer, @jest/transform, babel-jest, braces, create-jest, expect, jest, jest-circus, jest-cli, jest-config, jest-environment-node, jest-haste-map, jest-message-util, jest-resolve, jest-resolve-dependencies, jest-runner, jest-runtime, jest-snapshot, jest-watcher, micromatch"
+    },
+    {
+      "name": "build:server:coverage",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:server:runtime",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:server:eval",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:dashboard:lock",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:dashboard:lockfile",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:dashboard:install",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:dashboard:audit-high",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "build:dashboard:audit-dev",
+      "status": "warning",
+      "exit_code": 1,
+      "reason": "devDependency advisories (not shipped in the runtime image): braces, chokidar, fast-glob, micromatch, tailwindcss"
+    },
+    {
+      "name": "build:dashboard:build",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "product-completion-gate",
+      "status": "warning",
+      "exit_code": 0,
+      "reason": "readiness=scaffold_only; completion=10%; missing essential tools=bilingual-ui, channel-matcher, doj-roster-checker, statutory-rules-checker; workflow stubs=none"
+    },
+    {
+      "name": "post-finish:server:lock",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "post-finish:server:lockfile",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "post-finish:server:install",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "post-finish:server:migration",
+      "status": "ok",
+      "exit_code": 0,
+      "reason": "versioned migration present"
+    },
+    {
+      "name": "post-finish:server:audit-high",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "post-finish:server:audit-dev",
+      "status": "warning",
+      "exit_code": 1,
+      "reason": "devDependency advisories (not shipped in the runtime image): @jest/console, @jest/core, @jest/environment, @jest/expect, @jest/fake-timers, @jest/globals, @jest/reporters, @jest/test-result, @jest/test-sequencer, @jest/transform, babel-jest, braces, create-jest, expect, jest, jest-circus, jest-cli, jest-config, jest-environment-node, jest-haste-map, jest-message-util, jest-resolve, jest-resolve-dependencies, jest-runner, jest-runtime, jest-snapshot, jest-watcher, micromatch"
+    },
+    {
+      "name": "post-finish:server:coverage",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "post-finish:server:runtime",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "post-finish:server:eval",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "post-finish:dashboard:lock",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "post-finish:dashboard:lockfile",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "post-finish:dashboard:install",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "post-finish:dashboard:audit-high",
+      "status": "ok",
+      "exit_code": 0
+    },
+    {
+      "name": "post-finish:dashboard:audit-dev",
+      "status": "warning",
+      "exit_code": 1,
+      "reason": "devDependency advisories (not shipped in the runtime image): braces, chokidar, fast-glob, micromatch, tailwindcss"
+    },
+    {
+      "name": "post-finish:dashboard:build",
+      "status": "ok",
+      "exit_code": 0
+    }
+  ],
+  "build": {
+    "ok": true,
+    "skipped": false,
+    "steps": [
+      {
+        "name": "server:lock",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:lockfile",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:install",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:migration",
+        "status": "ok",
+        "exit_code": 0,
+        "detail": "versioned migration present"
+      },
+      {
+        "name": "server:audit-high",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:audit-dev",
+        "status": "warning",
+        "exit_code": 1,
+        "detail": "devDependency advisories (not shipped in the runtime image): @jest/console, @jest/core, @jest/environment, @jest/expect, @jest/fake-timers, @jest/globals, @jest/reporters, @jest/test-result, @jest/test-sequencer, @jest/transform, babel-jest, braces, create-jest, expect, jest, jest-circus, jest-cli, jest-config, jest-environment-node, jest-haste-map, jest-message-util, jest-resolve, jest-resolve-dependencies, jest-runner, jest-runtime, jest-snapshot, jest-watcher, micromatch"
+      },
+      {
+        "name": "server:coverage",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:runtime",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:eval",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "dashboard:lock",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "dashboard:lockfile",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "dashboard:install",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "dashboard:audit-high",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "dashboard:audit-dev",
+        "status": "warning",
+        "exit_code": 1,
+        "detail": "devDependency advisories (not shipped in the runtime image): braces, chokidar, fast-glob, micromatch, tailwindcss"
+      },
+      {
+        "name": "dashboard:build",
+        "status": "ok",
+        "exit_code": 0
+      }
+    ]
+  },
+  "summary": {
+    "total": 54,
+    "failures": 0,
+    "readiness": "scaffold_only",
+    "verified": "Final source passed its build gate but product readiness is scaffold_only; compilation alone is not product completion."
+  },
+  "product_completion": {
+    "readiness": "scaffold_only",
+    "score": 10,
+    "essentialTools": [
+      "bilingual-ui",
+      "channel-matcher",
+      "doj-roster-checker",
+      "statutory-rules-checker"
+    ],
+    "declaredTools": [
+      "bilingual-ui",
+      "channel-matcher",
+      "doj-roster-checker",
+      "statutory-rules-checker"
+    ],
+    "missingDeclaredTools": [],
+    "missingEssentialTools": [
+      "bilingual-ui",
+      "channel-matcher",
+      "doj-roster-checker",
+      "statutory-rules-checker"
+    ],
+    "tools": {
+      "implemented": [
+        "anomaly-detector",
+        "forecast",
+        "knowledge-search",
+        "risk-scorer",
+        "scorer",
+        "vuln-prioritizer"
+      ],
+      "credentialGated": [],
+      "honestStubs": [
+        "bilingual-ui",
+        "channel-matcher",
+        "doj-roster-checker",
+        "statutory-rules-checker"
+      ]
+    },
+    "workflows": {
+      "implemented": [],
+      "partial": [
+        "verification-process"
+      ],
+      "honestStubs": []
+    },
+    "gates": {
+      "build": true,
+      "runtime": true,
+      "workflow": false,
+      "integrations": true
+    }
+  },
+  "post_finish_build": {
+    "ok": true,
+    "skipped": false,
+    "steps": [
+      {
+        "name": "server:lock",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:lockfile",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:install",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:migration",
+        "status": "ok",
+        "exit_code": 0,
+        "detail": "versioned migration present"
+      },
+      {
+        "name": "server:audit-high",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:audit-dev",
+        "status": "warning",
+        "exit_code": 1,
+        "detail": "devDependency advisories (not shipped in the runtime image): @jest/console, @jest/core, @jest/environment, @jest/expect, @jest/fake-timers, @jest/globals, @jest/reporters, @jest/test-result, @jest/test-sequencer, @jest/transform, babel-jest, braces, create-jest, expect, jest, jest-circus, jest-cli, jest-config, jest-environment-node, jest-haste-map, jest-message-util, jest-resolve, jest-resolve-dependencies, jest-runner, jest-runtime, jest-snapshot, jest-watcher, micromatch"
+      },
+      {
+        "name": "server:coverage",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:runtime",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "server:eval",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "dashboard:lock",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "dashboard:lockfile",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "dashboard:install",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "dashboard:audit-high",
+        "status": "ok",
+        "exit_code": 0
+      },
+      {
+        "name": "dashboard:audit-dev",
+        "status": "warning",
+        "exit_code": 1,
+        "detail": "devDependency advisories (not shipped in the runtime image): braces, chokidar, fast-glob, micromatch, tailwindcss"
+      },
+      {
+        "name": "dashboard:build",
+        "status": "ok",
+        "exit_code": 0
+      }
+    ]
+  }
+}

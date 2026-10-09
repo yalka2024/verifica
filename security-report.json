@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-10-09T19:04:42.522Z",
+  "scope": {
+    "kind": "automated static analysis of generated source",
+    "isNotAn": "security audit, penetration test, or certification — zero findings here means only that these specific pattern checks matched nothing",
+    "checks": [
+      "committed secrets (high-confidence key formats)",
+      "dangerous code (eval / new Function / raw-SQL or shell interpolation)",
+      "weak randomness for security values",
+      "presence of auth / CSRF / rate-limit / security-header modules",
+      ".env hygiene"
+    ],
+    "notChecked": [
+      "business-logic and authorization correctness (can role X reach tenant Y data?)",
+      "runtime behaviour, dependency CVEs, container and infrastructure configuration",
+      "whether declared compliance controls are actually operated",
+      "domain logic emitted by an LLM fill pass"
+    ]
+  },
+  "summary": {
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "findings": []
+}

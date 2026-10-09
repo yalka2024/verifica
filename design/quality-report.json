@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0",
+  "deterministic": true,
+  "score": 100,
+  "passing": true,
+  "checks": [
+    {
+      "id": "token-system",
+      "pass": true
+    },
+    {
+      "id": "visible-focus",
+      "pass": true
+    },
+    {
+      "id": "reduced-motion",
+      "pass": true
+    },
+    {
+      "id": "responsive-rules",
+      "pass": true
+    },
+    {
+      "id": "state-coverage",
+      "pass": true
+    }
+  ],
+  "limitations": [
+    "Browser screenshots, screen-reader usability and subjective brand distinctiveness require browser/human review."
+  ]
+}

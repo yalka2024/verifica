@@ -1,0 +1,163 @@
+{
+  "runId": "2026-10-09T19-03-56-621Z",
+  "startedAt": "2026-10-09T19:03:56.621Z",
+  "finishedAt": "2026-10-09T19:03:56.631Z",
+  "sinceMs": 604800000,
+  "platform": "Verifica",
+  "industry": "cybersecurity",
+  "products": [
+    {
+      "product": "users_dim",
+      "file": "users_dim.ndjson",
+      "classification": "pii_redacted",
+      "columns": [
+        "id",
+        "email_domain",
+        "email_hash",
+        "role",
+        "org_id",
+        "email_verified",
+        "created_at",
+        "last_login_at"
+      ],
+      "rows": 0,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    },
+    {
+      "product": "orgs_dim",
+      "file": "orgs_dim.ndjson",
+      "classification": "internal",
+      "columns": [
+        "id",
+        "name",
+        "plan",
+        "created_at"
+      ],
+      "rows": 0,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    },
+    {
+      "product": "records_fact",
+      "file": "records_fact.ndjson",
+      "classification": "business",
+      "columns": [
+        "id",
+        "user_id",
+        "org_id",
+        "status",
+        "created_at",
+        "updated_at"
+      ],
+      "rows": 0,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    },
+    {
+      "product": "events_fact",
+      "file": "events_fact.ndjson",
+      "classification": "business",
+      "columns": [
+        "id",
+        "name",
+        "user_id",
+        "org_id",
+        "source",
+        "properties",
+        "created_at"
+      ],
+      "rows": 0,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    },
+    {
+      "product": "subscriptions_fact",
+      "file": "subscriptions_fact.ndjson",
+      "classification": "finance",
+      "columns": [
+        "id",
+        "org_id",
+        "plan_id",
+        "status",
+        "trial_ends_at",
+        "current_period_end",
+        "created_at"
+      ],
+      "rows": 0,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    },
+    {
+      "product": "invoices_fact",
+      "file": "invoices_fact.ndjson",
+      "classification": "finance",
+      "columns": [
+        "id",
+        "org_id",
+        "amount_cents",
+        "currency",
+        "status",
+        "period_start",
+        "period_end",
+        "created_at"
+      ],
+      "rows": 0,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    },
+    {
+      "product": "usage_events_fact",
+      "file": "usage_events_fact.ndjson",
+      "classification": "business",
+      "columns": [
+        "id",
+        "user_id",
+        "org_id",
+        "meter",
+        "quantity",
+        "period",
+        "created_at"
+      ],
+      "rows": 0,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    },
+    {
+      "product": "ai_spend_fact",
+      "file": "ai_spend_fact.ndjson",
+      "classification": "finance",
+      "columns": [
+        "id",
+        "org_id",
+        "user_id",
+        "provider",
+        "model",
+        "prompt_tokens",
+        "completion_tokens",
+        "ucents",
+        "outcome",
+        "period",
+        "created_at"
+      ],
+      "rows": 0,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null
+    }
+  ],
+  "totals": {
+    "rows": 0,
+    "bytes": 0,
+    "productCount": 8
+  },
+  "format": "ndjson",
+  "schemaVersion": 1
+}

@@ -1,0 +1,27 @@
+{
+  "id": "industrial-utilitarian",
+  "version": "1.0.0",
+  "principles": [
+    "legibility",
+    "state visibility",
+    "operational speed"
+  ],
+  "typography": "technical sans and tabular numerals",
+  "color": "neutral surfaces with semantic status colors",
+  "layout": "dense aligned grid",
+  "motion": "state transitions only",
+  "components": [
+    "command bar",
+    "status matrix"
+  ],
+  "imagery": "schematics and real equipment",
+  "forbidden": [
+    "decorative glass",
+    "ambiguous icons"
+  ],
+  "accessibility": [
+    "status beyond color",
+    "keyboard-first"
+  ],
+  "responsive": "prioritized operational columns"
+}

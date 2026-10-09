@@ -1,0 +1,28 @@
+# Verifica — ops image (backups / maintenance jobs)
+#
+# The Helm backup CronJob needs an image that actually contains pg-backup.sh
+# plus pg_dump and the object-storage CLI. Before this file existed the CronJob
+# referenced `ghcr.io/your-org/…-ops:latest`, which nothing built — so the
+# "automated daily backups" control had no mechanism behind it at all
+# (external audit). Build and push this, or leave backup.enabled=false.
+#
+#   docker build -f Dockerfile.ops -t ghcr.io/OWNER/verifica-ops:latest .
+#   docker push  ghcr.io/OWNER/verifica-ops:latest
+FROM debian:bookworm-slim
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      postgresql-client ca-certificates curl gnupg unzip gzip coreutils \
+ && curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -o /tmp/awscliv2.zip \
+ && unzip -q /tmp/awscliv2.zip -d /tmp \
+ && /tmp/aws/install \
+ && rm -rf /tmp/aws /tmp/awscliv2.zip /var/lib/apt/lists/*
+
+COPY ops/backup/pg-backup.sh /usr/local/bin/pg-backup.sh
+RUN chmod +x /usr/local/bin/pg-backup.sh
+
+# The CronJob runs as 1001 with a read-only root filesystem; /tmp is mounted
+# writable by the pod spec for the dump staging area.
+USER 1001:1001
+ENTRYPOINT ["/usr/local/bin/pg-backup.sh"]
+

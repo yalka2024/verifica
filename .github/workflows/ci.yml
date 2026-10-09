@@ -1,0 +1,62 @@
+name: ci
+
+on:
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
+
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: verifica
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      NODE_ENV: test
+      JWT_SECRET: ci-jwt-secret-must-be-at-least-32-characters-long-ok
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/verifica
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22.12', cache: 'npm', cache-dependency-path: server/package-lock.json }
+      - name: Install
+        working-directory: server
+        run: npm ci --no-audit --no-fund
+      - name: Prisma generate
+        working-directory: server
+        run: npx prisma generate
+      # `migrate deploy || true` against an empty migrations/ directory was a
+      # no-op that could not fail — CI proved nothing about the schema. The
+      # app provisions with `db push` (no migrations are shipped), so CI does
+      # the same thing, and it is allowed to fail the build.
+      - name: Apply versioned Prisma migrations
+        working-directory: server
+        run: npx prisma migrate deploy
+      - name: Runtime smoke against isolated CI PostgreSQL
+        working-directory: server
+        run: npm run test:runtime
+      - name: Tests (with coverage — thresholds are declared, so enforce them)
+        working-directory: server
+        run: npm test -- --coverage
+
+  dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22.12', cache: 'npm', cache-dependency-path: dashboard/package-lock.json }
+      - name: Install
+        working-directory: dashboard
+        run: npm ci --no-audit --no-fund
+      - name: Build
+        working-directory: dashboard
+        run: npm run build --if-present
+

@@ -1,0 +1,66 @@
+{
+  "app": {
+    "title": "Verifica",
+    "skipToContent": "Skip to main content",
+    "loading": "Loading…",
+    "error": "Something went wrong",
+    "retry": "Retry"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "register": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "mfaCode": "Two-factor code",
+    "forgotPassword": "Forgot your password?",
+    "fullName": "Full Name",
+    "pleaseWait": "Please wait...",
+    "noAccount": "Don't have an account? Register",
+    "haveAccount": "Already have an account? Sign In",
+    "signInForm": "Sign in form",
+    "createAccountForm": "Create account form",
+    "privateBeta": "🔒 Private Beta — Authorized access only",
+    "setupNotice": "This instance hasn’t been configured yet.",
+    "runSetupWizard": "Run the setup wizard →"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "apiKeys": "API keys",
+    "billing": "Billing",
+    "assistant": "AI Assistant",
+    "data": "Data",
+    "tools": "Tools",
+    "guidedFlows": "Guided flows",
+    "trust": "Trust",
+    "tenants": "Tenants",
+    "aiEconomics": "AI economics",
+    "aiEvaluations": "AI evaluations",
+    "growth": "Growth",
+    "dataProducts": "Data products",
+    "marketplace": "Marketplace",
+    "operations": "Operations",
+    "status": "Status",
+    "trustPortal": "Trust portal",
+    "governance": "Governance",
+    "pricing": "Pricing",
+    "helpCentre": "Help centre"
+  },
+  "actions": {
+    "create": "Create",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "confirmDelete": "Are you sure you want to delete this item?"
+  },
+  "table": {
+    "empty": "No items yet",
+    "loading": "Loading rows…",
+    "loadMore": "Load more"
+  },
+  "common": {
+    "welcome": "Welcome, {name}"
+  }
+}
+

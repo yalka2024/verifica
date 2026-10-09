@@ -1,0 +1,31 @@
+{{- if .Values.podDisruptionBudget.enabled }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: verifica-server-pdb
+spec:
+  minAvailable: {{ .Values.podDisruptionBudget.server.minAvailable }}
+  selector:
+    matchLabels: { app: verifica, component: server }
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: verifica-dashboard-pdb
+spec:
+  minAvailable: {{ .Values.podDisruptionBudget.dashboard.minAvailable }}
+  selector:
+    matchLabels: { app: verifica, component: dashboard }
+{{- if .Values.worker.enabled }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: verifica-worker-pdb
+spec:
+  minAvailable: {{ .Values.podDisruptionBudget.worker.minAvailable }}
+  selector:
+    matchLabels: { app: verifica, component: worker }
+{{- end }}
+{{- end }}
+

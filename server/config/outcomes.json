@@ -1,0 +1,6 @@
+{
+  "_comment": "Outcome-based billing config for Verifica. billing_model: per_seat. Each event is a billable business outcome; only outcomes confirmed successful are metered (see lib/outcomes.js). Map each event to a Stripe metered subscription-item price via env STRIPE_OUTCOME_ITEM_<EVENT_UPPER_SNAKE>.",
+  "billing_model": "per_seat",
+  "events": []
+}
+

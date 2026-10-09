@@ -1,0 +1,129 @@
+{{- if .Values.networkPolicy.enabled }}
+# Default-deny ingress + selective egress for the verifica namespace.
+# This is the L4 zero-trust baseline. Everything not explicitly allowed
+# is dropped.
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: verifica-default-deny
+spec:
+  podSelector: {}
+  policyTypes: [Ingress, Egress]
+---
+# API server: ingress only from the ingress controller; egress to DNS,
+# Postgres, Redis, and the wider internet (for AI/Stripe/email APIs).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: verifica-server
+spec:
+  podSelector:
+    matchLabels: { app: verifica, component: server }
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels: { name: {{ .Values.networkPolicy.ingressNamespace }} }
+      ports:
+        - { protocol: TCP, port: 4000 }
+    # Allow Prometheus scraping
+    - from:
+        - namespaceSelector:
+            matchLabels: { name: {{ .Values.networkPolicy.monitoringNamespace }} }
+      ports:
+        - { protocol: TCP, port: 4000 }
+  egress:
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels: { k8s-app: kube-dns }
+      ports:
+        - { protocol: UDP, port: 53 }
+        - { protocol: TCP, port: 53 }
+    {{- range .Values.networkPolicy.egressCidrs }}
+    - to:
+        - ipBlock: { cidr: {{ . | quote }} }
+    {{- end }}
+---
+# Worker: no ingress (not externally reachable); egress same as server.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: verifica-worker
+spec:
+  podSelector:
+    matchLabels: { app: verifica, component: worker }
+  policyTypes: [Ingress, Egress]
+  egress:
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels: { k8s-app: kube-dns }
+      ports:
+        - { protocol: UDP, port: 53 }
+        - { protocol: TCP, port: 53 }
+    {{- range .Values.networkPolicy.egressCidrs }}
+    - to:
+        - ipBlock: { cidr: {{ . | quote }} }
+    {{- end }}
+---
+# Dashboard (nginx): ingress only from ingress controller, no egress
+# beyond DNS (it's static content).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: verifica-dashboard
+spec:
+  podSelector:
+    matchLabels: { app: verifica, component: dashboard }
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels: { name: {{ .Values.networkPolicy.ingressNamespace }} }
+      ports:
+        - { protocol: TCP, port: 8080 }
+  egress:
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels: { k8s-app: kube-dns }
+      ports:
+        - { protocol: UDP, port: 53 }
+        - { protocol: TCP, port: 53 }
+{{- end }}
+---
+# Ollama (on-prem/self-hosted inference). Without this the namespace
+# default-deny covers the pod but nothing permits it, so server/worker calls
+# to the model fail the moment a CNI actually enforces policy — the on-prem
+# AI story dies silently (external audit finding).
+{{- if .Values.ollama }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: verifica-ollama
+spec:
+  podSelector:
+    matchLabels: { app: verifica, component: ollama }
+  policyTypes: [Ingress, Egress]
+  ingress:
+    # Only the app tiers may reach the model; nothing else in the namespace.
+    - from:
+        - podSelector:
+            matchLabels: { app: verifica, component: server }
+        - podSelector:
+            matchLabels: { app: verifica, component: worker }
+      ports:
+        - { protocol: TCP, port: 11434 }
+  egress:
+    # DNS only: a self-hosted model has no reason to reach the internet.
+    - to:
+        - namespaceSelector: {}
+          podSelector:
+            matchLabels: { k8s-app: kube-dns }
+      ports:
+        - { protocol: UDP, port: 53 }
+        - { protocol: TCP, port: 53 }
+{{- end }}
+

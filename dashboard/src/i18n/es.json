@@ -1,0 +1,66 @@
+{
+  "app": {
+    "title": "Verifica",
+    "skipToContent": "Saltar al contenido principal",
+    "loading": "Cargando…",
+    "error": "Algo salió mal",
+    "retry": "Reintentar"
+  },
+  "auth": {
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión",
+    "register": "Crear cuenta",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "mfaCode": "Código de doble factor",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "fullName": "Nombre completo",
+    "pleaseWait": "Un momento...",
+    "noAccount": "¿No tienes cuenta? Regístrate",
+    "haveAccount": "¿Ya tienes cuenta? Inicia sesión",
+    "signInForm": "Formulario de inicio de sesión",
+    "createAccountForm": "Formulario de creación de cuenta",
+    "privateBeta": "🔒 Beta privada — Acceso autorizado solamente",
+    "setupNotice": "Esta instancia aún no ha sido configurada.",
+    "runSetupWizard": "Ejecutar el asistente de configuración →"
+  },
+  "nav": {
+    "dashboard": "Panel",
+    "settings": "Ajustes",
+    "apiKeys": "Claves de API",
+    "billing": "Facturación",
+    "assistant": "Asistente de IA",
+    "data": "Datos",
+    "tools": "Herramientas",
+    "guidedFlows": "Flujos guiados",
+    "trust": "Confianza",
+    "tenants": "Inquilinos",
+    "aiEconomics": "Economía de IA",
+    "aiEvaluations": "Evaluaciones de IA",
+    "growth": "Crecimiento",
+    "dataProducts": "Productos de datos",
+    "marketplace": "Mercado",
+    "operations": "Operaciones",
+    "status": "Estado",
+    "trustPortal": "Portal de confianza",
+    "governance": "Gobernanza",
+    "pricing": "Precios",
+    "helpCentre": "Centro de ayuda"
+  },
+  "actions": {
+    "create": "Crear",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "confirmDelete": "¿Seguro que quieres eliminar este elemento?"
+  },
+  "table": {
+    "empty": "Aún no hay elementos",
+    "loading": "Cargando filas…",
+    "loadMore": "Cargar más"
+  },
+  "common": {
+    "welcome": "Bienvenido/a, {name}"
+  }
+}
+

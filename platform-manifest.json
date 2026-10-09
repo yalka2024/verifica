@@ -1,0 +1,45 @@
+{
+  "name": "Verifica",
+  "version": "1.0.0",
+  "industry": "cybersecurity",
+  "archetype": "saas-platform",
+  "compliance": {
+    "frameworks": [
+      "GDPR",
+      "CCPA"
+    ]
+  },
+  "components": {
+    "agents": 3,
+    "workflows": 2,
+    "tools": 4,
+    "ui": false,
+    "api": false
+  },
+  "generator": {
+    "version": "0.2.1",
+    "git_sha": "6bfe8f2",
+    "spec_sha256": "a96fd55ae67514bfa8dd309685274dda8ec9605963bcf23e25932c96267e313c"
+  },
+  "generated": "2026-10-09T19:04:42.404Z",
+  "plugins": [
+    {
+      "id": "saas-platform-core",
+      "version": "builtin",
+      "priority": 0,
+      "source": "builtin",
+      "description": "Built-in saas-platform archetype",
+      "applies_to_industries": [
+        null
+      ]
+    },
+    {
+      "id": "example-security-docs",
+      "version": "0.1.0",
+      "priority": 10,
+      "source": "external",
+      "description": "Example external plugin: ships SECURITY.md alongside generated platforms",
+      "applies_to_industries": []
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "selected": "distinctive",
+  "directions": [
+    {
+      "id": "conservative",
+      "selected": false,
+      "audience": "immigrant families, international students, H-1B workers",
+      "primary_job": "verify immigration help authenticity",
+      "rationale": "Familiar composition with product-specific tokens.",
+      "representative_surfaces": [
+        "landing",
+        "primary-application",
+        "mobile"
+      ]
+    },
+    {
+      "id": "distinctive",
+      "selected": true,
+      "audience": "immigrant families, international students, H-1B workers",
+      "primary_job": "verify immigration help authenticity",
+      "rationale": "Distinctive product identity with production-safe interaction patterns.",
+      "representative_surfaces": [
+        "landing",
+        "primary-application",
+        "mobile"
+      ]
+    },
+    {
+      "id": "experimental",
+      "selected": false,
+      "audience": "immigrant families, international students, H-1B workers",
+      "primary_job": "verify immigration help authenticity",
+      "rationale": "A justified compositional risk while retaining accessibility gates.",
+      "representative_surfaces": [
+        "landing",
+        "primary-application",
+        "mobile"
+      ]
+    }
+  ]
+}
