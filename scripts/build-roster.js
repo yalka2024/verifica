@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 /**
- * Build data/eoir/roster.json from the official DOJ EOIR Recognition &
+ * Build server/data/eoir-roster.json from the official DOJ EOIR Recognition &
  * Accreditation roster (by state), extracted with `pdftotext -layout`.
  *
  *   pdftotext -layout data/eoir/eoir-ra-roster-by-state-*.pdf data/eoir/roster.txt
@@ -102,5 +102,7 @@ const out = {
     name: `${first} ${surname}`.replace(/\s+/g, ' '), last_first: `${surname}, ${first}`, ...rest,
   })),
 };
-fs.writeFileSync(path.join(dir, 'roster.json'), `${JSON.stringify(out, null, 1)}\n`);
+const outFile = path.join(__dirname, '..', 'server', 'data', 'eoir-roster.json');
+fs.mkdirSync(path.dirname(outFile), { recursive: true });
+fs.writeFileSync(outFile, `${JSON.stringify(out, null, 1)}\n`);
 console.log(`roster updated ${updated}: ${organizations.length} organization offices, ${representatives.length} representatives`);
