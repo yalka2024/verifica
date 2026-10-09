@@ -6,7 +6,7 @@
  */
 const SOURCES = {
   eoir_fraud: { title: 'DOJ EOIR — Are You a Victim of Fraud? (self-help guide)', url: 'https://www.justice.gov/eoir/page/file/1480746/dl?inline=' },
-  uscis_scams: { title: 'USCIS — Avoid Scams', url: 'https://www.uscis.gov/scams-fraud-and-misconduct/avoid-scams' },
+  uscis_scams: { title: 'USCIS — Common Scams', url: 'https://www.uscis.gov/scams-fraud-and-misconduct/avoid-scams/common-scams' },
   eoir_roster: { title: 'DOJ EOIR — Recognized Organizations and Accredited Representatives Roster', url: 'https://www.justice.gov/eoir/recognition-accreditation-roster-reports' },
 };
 

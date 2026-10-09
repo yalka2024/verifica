@@ -91,8 +91,8 @@ async function verify(input = {}, deps = {}) {
     claims,
     extraction: { method, model: model || null, note: note || null },
     next_steps: {
-      en: ['Look up the person or organization on the official DOJ roster.', 'Only an attorney or a DOJ-accredited representative at a recognized organization may give you immigration legal help.', 'Never pay with gift cards, crypto or wire transfers, and keep your original documents.', 'Report fraud: reportfraud.ftc.gov'],
-      es: ['Busque a la persona u organización en la lista oficial del DOJ.', 'Solo un abogado o un representante acreditado por el DOJ en una organización reconocida puede darle ayuda legal de inmigración.', 'Nunca pague con tarjetas de regalo, criptomonedas ni transferencias, y guarde sus documentos originales.', 'Denuncie el fraude: reportfraud.ftc.gov'],
+      en: ['Look up the person or organization on the official DOJ roster.', 'Only an attorney or a DOJ-accredited representative at a recognized organization may give you immigration legal help.', 'Never pay with gift cards, crypto or wire transfers, and keep your original documents.', 'Report the scam: uscis.gov/report-fraud or reportfraud.ftc.gov'],
+      es: ['Busque a la persona u organización en la lista oficial del DOJ.', 'Solo un abogado o un representante acreditado por el DOJ en una organización reconocida puede darle ayuda legal de inmigración.', 'Nunca pague con tarjetas de regalo, criptomonedas ni transferencias, y guarde sus documentos originales.', 'Denuncie la estafa: uscis.gov/report-fraud o reportfraud.ftc.gov'],
     },
     roster: roster.meta(),
     disclaimer: {
