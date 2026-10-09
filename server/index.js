@@ -206,6 +206,12 @@ app.use('/api/', limiters.global);
 // CSRF and auth layers on purpose: a submitter has no session and must not need
 // one. No-op unless the spec marks an entity `anonymous: true`.
 app.use('/api/public/intake', publicIntakeRoutes);
+// Verifica public check — no session, no CSRF cookie needed, nothing stored.
+app.use('/api/public/check', require('./routes/public-check'));
+// The public check page. It is also the home page unless the full dashboard
+// is bundled into this container.
+app.use('/check', express.static(path.join(__dirname, 'public', 'check'), { maxAge: '5m' }));
+if (process.env.SERVE_DASHBOARD !== '1') app.get('/', (req, res) => res.redirect(302, '/check/'));
 
 // Public machine-readable discovery. Execution remains behind auth + CSRF.
 app.use('/.well-known', agentGatewayRoutes.discovery);

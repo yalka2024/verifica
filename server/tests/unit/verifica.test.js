@@ -103,3 +103,8 @@ describe('extraction hardening', () => {
     expect(regexExtract('Usted necesita pagar hoy').language).toBe('es');
   });
 });
+
+test('a title mistaken for a name is not looked up as a person', async () => {
+  const r = await verify({ text: 'Soy notario' }, fakeAi({ ...empty, person_names: ['notario', 'the lawyer', 'María'] }));
+  expect(r.checks.people).toEqual([]);
+});

@@ -104,8 +104,8 @@ const ROSTER_FINDINGS = {
   },
   phone_mismatch: {
     weight: 30, source: 'eoir_roster',
-    en: (n, p) => `The phone number you were given (${p}) is not the number DOJ has on file for "${n}". Call the official number instead — someone may be using the organization's name.`,
-    es: (n, p) => `El teléfono que le dieron (${p}) no es el que el DOJ tiene registrado para "${n}". Llame al número oficial: alguien podría estar usando el nombre de la organización.`,
+    en: (n, p) => `The phone number you were given, ${p}, is not the number DOJ has on file for "${n}". Call the official number instead — someone may be using the organization's name.`,
+    es: (n, p) => `El teléfono que le dieron, ${p}, no es el que el DOJ tiene registrado para "${n}". Llame al número oficial: alguien podría estar usando el nombre de la organización.`,
   },
   claims_attorney_unverified: {
     weight: 10, source: 'eoir_fraud',

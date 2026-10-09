@@ -12,7 +12,7 @@
  * the same answer and every reason points at an official source.
  */
 const roster = require('./roster');
-const { RULES, ROSTER_FINDINGS, SOURCES, ACCREDITED, ATTORNEY } = require('./rules');
+const { RULES, ROSTER_FINDINGS, SOURCES, ACCREDITED, ATTORNEY, NOTARIO } = require('./rules');
 const { extractClaims } = require('./extract');
 
 const clip = (s, n = 200) => (typeof s === 'string' ? s.trim().slice(0, n) : '');
@@ -29,7 +29,10 @@ async function verify(input = {}, deps = {}) {
   const { claims, method, model, note } = await extractClaims(text, deps);
 
   // Explicit form fields are authoritative and join the extracted claims.
-  const people = [...new Set([clip(input.name), ...claims.person_names].map(stripHonorific).filter(Boolean))].slice(0, 3);
+  // A roster check needs a real name: at least two words, not just a title the
+  // model mistook for a name ("notario", "the lawyer").
+  const people = [...new Set([clip(input.name), ...claims.person_names].map(stripHonorific)
+    .filter((n) => n && n.split(/\s+/).length >= 2 && !NOTARIO.test(n) && !ATTORNEY.test(n) && !ACCREDITED.test(n)))].slice(0, 3);
   // Government agencies are not "organizations offering help": impersonating
   // one is caught by the government_impersonation rule instead.
   const orgs = [...new Set([clip(input.organization), ...claims.organization_names].filter((o) => o && !GOV_AGENCY.test(o)))].slice(0, 3);

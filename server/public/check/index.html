@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verifica — verifique antes de pagar</title>
+  <meta name="description" content="Check if the person offering you immigration help is real before you pay or share documents. Verifique si quien le ofrece ayuda de inmigración es real.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-row">
+      <a class="brand" href="./" aria-label="Verifica">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 4 7v8c0 7.4 5.1 13.6 12 15 6.9-1.4 12-7.6 12-15V7L16 2Z" fill="currentColor"/><path d="m10.5 16.5 3.8 3.8 7.4-8" fill="none" stroke="var(--paper)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Verifica</span>
+      </a>
+      <div class="lang" role="group" aria-label="Language / Idioma">
+        <button type="button" data-lang="es" aria-pressed="true">Español</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <h1 data-i18n="title">¿Le ofrecen ayuda con su caso de inmigración? Verifique antes de pagar.</h1>
+      <p data-i18n="lede">Pegue el mensaje, anuncio o WhatsApp que recibió. Lo revisamos contra la lista oficial del Departamento de Justicia y las señales de fraude que publican USCIS y EOIR.</p>
+    </section>
+
+    <form id="check" class="card" novalidate>
+      <label for="text" class="label" data-i18n="textLabel">Mensaje o anuncio</label>
+      <textarea id="text" name="text" rows="6" maxlength="6000" data-i18n-ph="textPh" placeholder="Ej.: «Soy notario, le garantizo su residencia. Pague hoy por Zelle…»"></textarea>
+
+      <div class="examples">
+        <span data-i18n="tryLabel">Pruebe un ejemplo:</span>
+        <button type="button" class="chip" data-example="notario" data-i18n="exNotario">Notario por WhatsApp</button>
+        <button type="button" class="chip" data-example="uscis" data-i18n="exUscis">Llamada «de USCIS»</button>
+        <button type="button" class="chip" data-example="impostor" data-i18n="exImpostor">Organización suplantada</button>
+      </div>
+
+      <details class="more">
+        <summary data-i18n="moreLabel">Agregar nombre, organización o teléfono (opcional)</summary>
+        <div class="grid">
+          <label><span data-i18n="nameLabel">Nombre de la persona</span><input id="name" name="name" autocomplete="off" maxlength="200"></label>
+          <label><span data-i18n="orgLabel">Organización</span><input id="organization" name="organization" autocomplete="off" maxlength="200"></label>
+          <label><span data-i18n="phoneLabel">Teléfono que le dieron</span><input id="phone" name="phone" inputmode="tel" autocomplete="off" maxlength="40"></label>
+        </div>
+      </details>
+
+      <button type="submit" class="go" id="go"><span data-i18n="go">Verificar</span></button>
+      <p class="privacy" data-i18n="privacy">No guardamos lo que pega aquí. No necesita cuenta.</p>
+    </form>
+
+    <section id="result" class="result" aria-live="polite" hidden></section>
+  </main>
+
+  <footer class="wrap foot">
+    <p data-i18n="foot">Verifica es una ayuda para verificar, no asesoría legal. Datos oficiales: Departamento de Justicia de EE. UU. (EOIR), lista de organizaciones reconocidas y representantes acreditados.</p>
+    <p id="roster-meta" class="meta"></p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
