@@ -9,7 +9,7 @@
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.5.4",
     "class-variance-authority": "^0.7.1",
-    "lucide-react": "^0.468.0",
+    "lucide-react": "^0.577.0",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.1",
     "react-markdown": "^9.0.1",
