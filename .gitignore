@@ -5,3 +5,5 @@ coverage/
 .env.*
 !.env*.example
 data/eoir/roster.txt
+data-exports/
+server/data-exports/
