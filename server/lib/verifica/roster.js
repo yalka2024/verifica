@@ -91,4 +91,17 @@ function publicOrg(o) {
   return { name: o.name, office: o.office, address: o.address, city: o.city, state: o.state, zip: o.zip, phone: o.phone };
 }
 
-module.exports = { load, findRepresentative, findOrganization, nameKey, digits, meta: () => load().meta };
+// DOJ EOIR List of Currently Disciplined Practitioners (eoir-discipline.json).
+let discipline = null;
+function findDisciplined(name) {
+  if (!discipline) {
+    const raw = require(path.join(__dirname, '..', '..', 'data', 'eoir-discipline.json'));
+    discipline = { meta: { source: raw.source, source_url: raw.source_url, list_last_updated: raw.list_last_updated }, rows: raw.practitioners.map((p) => ({ ...p, key: nameKey(p.name) })) };
+  }
+  const key = nameKey(name);
+  // Exact (accent/case/order-insensitive) name only; still just a NAME match.
+  const matches = key ? discipline.rows.filter((p) => p.key === key).map(({ key: _k, ...p }) => p) : [];
+  return { matches, meta: discipline.meta };
+}
+
+module.exports = { load, findRepresentative, findOrganization, findDisciplined, nameKey, digits, meta: () => load().meta };

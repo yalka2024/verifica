@@ -139,3 +139,12 @@ test('negated promises from the model and a mere USCIS mention do not flag', asy
   expect(ids(r)).not.toContain('government_impersonation');
   expect(ids(r)).not.toContain('blank_forms_or_false_info');
 });
+
+test('a practitioner on DOJ\'s disciplined list is flagged with the official order', async () => {
+  const r = await verify({ name: 'Ande Abraha', text: 'I am an immigration attorney, I can take your case.' }, noAi);
+  const f = r.findings.find((x) => x.id === 'eoir_disciplined');
+  expect(f).toBeTruthy();
+  expect(f.en).toMatch(/Disbarred/);
+  expect(f.source.url).toMatch(/^https:\/\/www\.justice\.gov\//);
+  expect(r.risk).not.toBe('low');
+});

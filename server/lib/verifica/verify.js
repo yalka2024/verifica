@@ -49,8 +49,23 @@ async function verify(input = {}, deps = {}) {
   const checks = { people: [], organizations: [] };
 
   for (const name of people) {
+    // Discipline first: a person can be real and listed, yet barred from
+    // practising immigration law.
+    const d = roster.findDisciplined(name);
+    for (const p of d.matches.slice(0, 2)) {
+      const active = !/^yes/i.test(p.reinstated || '');
+      const where = p.location ? ` (${p.location})` : '';
+      const when = p.effective ? `, effective ${p.effective}` : '';
+      const cuando = p.effective ? `, vigente desde ${p.effective}` : '';
+      findings.push({
+        id: 'eoir_disciplined', weight: active ? 50 : 10, severity: active ? 'high' : 'low',
+        en: `"${p.name}"${where} is on DOJ's List of Currently Disciplined Practitioners: ${p.sanction || 'disciplined'}${when}${active ? '. A disciplined practitioner may not represent you before immigration courts or DHS.' : ', later reinstated.'} This is a name match — confirm it is the same person (city/state) using the official order.`,
+        es: `"${p.name}"${where} aparece en la lista del DOJ de profesionales sancionados: ${p.sanction || 'sancionado'}${cuando}${active ? '. Una persona sancionada no puede representarle ante las cortes de inmigración ni ante DHS.' : ', luego reinstaurado.'} Coincide el nombre: confirme que es la misma persona (ciudad/estado) con la orden oficial.`,
+        source: { title: 'DOJ EOIR — disciplinary order', url: p.order_link || d.meta.source_url },
+      });
+    }
     const r = roster.findRepresentative(name);
-    checks.people.push({ name, ...r });
+    checks.people.push({ name, ...r, discipline: d.matches.slice(0, 2) });
     const F = ROSTER_FINDINGS;
     if (r.status === 'listed') findings.push(finding('person_listed', F.person_listed.weight, F.person_listed.source, F.person_listed.en(name), F.person_listed.es(name)));
     else if (r.status === 'not_listed' && claimsAccredited) findings.push(finding('claims_accredited_not_listed', F.claims_accredited_not_listed.weight, 'eoir_roster', F.claims_accredited_not_listed.en(name), F.claims_accredited_not_listed.es(name)));
