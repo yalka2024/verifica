@@ -108,3 +108,26 @@ test('a title mistaken for a name is not looked up as a person', async () => {
   const r = await verify({ text: 'Soy notario' }, fakeAi({ ...empty, person_names: ['notario', 'the lawyer', 'María'] }));
   expect(r.checks.people).toEqual([]);
 });
+
+describe('review fixes (2026-10-10)', () => {
+  test('legitimate advice with warnings and a USCIS mention is not flagged', async () => {
+    const text = 'We are a nonprofit. We never guarantee results. Never pay with gift cards and never sign blank forms. Our consultation fee is $50 and we help with USCIS applications.';
+    const r = await verify({ text }, noAi);
+    expect(ids(r)).not.toContain('guaranteed_result');
+    expect(ids(r)).not.toContain('untraceable_payment');
+    expect(ids(r)).not.toContain('blank_forms_or_false_info');
+    expect(ids(r)).not.toContain('government_impersonation');
+    expect(r.risk).not.toBe('high');
+  });
+  test('a vague message with no identity is inconclusive, not "no red flags"', async () => {
+    const r = await verify({ text: 'Hello, I can help with your paperwork.' }, noAi);
+    expect(r.risk).toBe('inconclusive');
+  });
+  test('a listed name never cancels a warning', async () => {
+    const r = await verify({ name: 'Ivana Serret', text: 'I guarantee your green card.' }, noAi);
+    expect(ids(r)).toContain('guaranteed_result');
+    expect(ids(r)).toContain('person_listed');
+    expect(r.risk).not.toBe('low');
+    expect(r.score).toBeGreaterThan(0);
+  });
+});

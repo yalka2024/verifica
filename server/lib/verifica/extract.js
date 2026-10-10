@@ -34,20 +34,29 @@ const URL_RE = /\b(?:https?:\/\/|www\.)[^\s<>"')]+|\b[a-z0-9-]+\.(?:com|net|org|
 const PAY_RE = /gift ?card|tarjeta de regalo|bitcoin|crypto|usdt|western union|moneygram|zelle|cash ?app|venmo|paypal|transferencia|wire transfer|efectivo|cash/gi;
 const MONEY_RE = /\$\s?\d[\d,.]*|\d[\d,.]*\s?(?:d[oó]lares|dollars|usd)/i;
 const TITLE_RE = /notari[oa]( p[uú]blico)?|notary( public)?|abogad[oa]|attorney|lawyer|representante (legal )?acreditad[oa]|accredited representative|consultor(a)? de inmigraci[oó]n|immigration consultant/gi;
-const GOV_RE = /\buscis\b|\bice\b|\bcbp\b|\bdhs\b|departamento de (inmigraci[oó]n|seguridad nacional)|oficina de inmigraci[oó]n|immigration office|embajada|embassy|gobierno federal|federal government/i;
+// Claiming to BE the government, not merely mentioning it ("help with your
+// USCIS application" is not impersonation).
+const GOV_RE = /\b(?:from|de|del|officer|oficial|agente|agent|work(?:ing)? (?:with|for)|trabajo (?:con|para)|on behalf of|en nombre de|somos|we are|i am|soy)\s+(?:the\s+|la\s+|el\s+)?(?:uscis|ice|cbp|dhs|inmigraci[oó]n|migraci[oó]n|immigration (?:office|services)|embajada|embassy|gobierno|government)\b/i;
+// Sentences that warn or deny ("we never guarantee", "nunca pague con tarjetas
+// de regalo") describe what a scam looks like; they are not the scam.
+const NEGATION_RE = /\b(?:never|nunca|jam[aá]s|do not|don't|does not|doesn't|we don't|no (?:pague|firme|firmamos|garantiz\w*|cobramos|aceptamos|acepte|entregue)|not (?:guarantee|accept|ask|charge))\b/i;
+function stripNegated(text) {
+  return String(text || '').split(/(?<=[.!?¡¿\n])\s+/).filter((s) => !NEGATION_RE.test(s)).join(' ');
+}
 
 const uniq = (a) => [...new Set(a.map((s) => String(s).trim()).filter(Boolean))];
 const strList = (v, max = 10) => (Array.isArray(v) ? uniq(v.filter((s) => typeof s === 'string').map((s) => s.slice(0, 200))).slice(0, max) : []);
 
 function regexExtract(text) {
-  const t = String(text || '');
+  const full = String(text || '');
+  const t = stripNegated(full);
   const methods = uniq((t.match(PAY_RE) || []).map((m) => m.toLowerCase()));
   return {
     language: /[áéíóúñ¿¡]|\b(usted|para|que|con|los|las|su)\b/i.test(t) ? 'es' : 'en',
     person_names: [], organization_names: [],
     claimed_titles: uniq((t.match(TITLE_RE) || []).map((m) => m.toLowerCase())),
     claims_government_affiliation: GOV_RE.test(t),
-    phones: uniq(t.match(PHONE_RE) || []), emails: uniq(t.match(EMAIL_RE) || []), websites: uniq(t.match(URL_RE) || []),
+    phones: uniq(full.match(PHONE_RE) || []), emails: uniq(full.match(EMAIL_RE) || []), websites: uniq(full.match(URL_RE) || []),
     payment: { requested: methods.length > 0 || MONEY_RE.test(t), amount: (t.match(MONEY_RE) || [null])[0], methods },
     promises: [], urgency: false, document_requests: [], services: [],
   };
@@ -97,4 +106,4 @@ async function extractClaims(text, { complete = gateway.complete } = {}) {
   }
 }
 
-module.exports = { extractClaims, regexExtract, sanitize, SYSTEM };
+module.exports = { extractClaims, regexExtract, sanitize, stripNegated, SYSTEM };

@@ -13,7 +13,7 @@
  */
 const roster = require('./roster');
 const { RULES, ROSTER_FINDINGS, SOURCES, ACCREDITED, ATTORNEY, NOTARIO } = require('./rules');
-const { extractClaims } = require('./extract');
+const { extractClaims, stripNegated } = require('./extract');
 
 const clip = (s, n = 200) => (typeof s === 'string' ? s.trim().slice(0, n) : '');
 const HONORIFIC = /^(?:(?:lic|licda?|licenciad[oa]|dr|dra|sr|sra|srta|mr|mrs|ms|atty|abog|abogad[oa]|notari[oa]|officer|agent|agente|oficial)\.?\s+)+/i;
@@ -37,7 +37,7 @@ async function verify(input = {}, deps = {}) {
   // one is caught by the government_impersonation rule instead.
   const orgs = [...new Set([clip(input.organization), ...claims.organization_names].filter((o) => o && !GOV_AGENCY.test(o)))].slice(0, 3);
   const phones = [...new Set([clip(input.phone, 40), ...claims.phones].filter(Boolean))].slice(0, 3);
-  const haystack = [text, ...claims.claimed_titles, ...claims.promises, ...claims.services].join('\n');
+  const haystack = [stripNegated(text), ...claims.claimed_titles, ...claims.promises, ...claims.services].join('\n');
 
   const findings = [];
   for (const rule of RULES) {
@@ -75,8 +75,14 @@ async function verify(input = {}, deps = {}) {
     }
   }
 
-  const score = Math.max(0, Math.min(100, findings.reduce((s, f) => s + f.weight, 0)));
-  const risk = score >= 60 ? 'high' : score >= 25 ? 'medium' : 'low';
+  // Warning signs and roster matches are scored separately: a scammer can copy
+  // a real representative's name, so a match must never cancel a warning.
+  const score = Math.min(100, findings.filter((f) => f.weight > 0).reduce((s, f) => s + f.weight, 0));
+  const identityChecked = checks.people.length + checks.organizations.length > 0 || phones.length > 0;
+  const risk = score >= 60 ? 'high' : score >= 25 ? 'medium' : score > 0 ? 'low'
+    // Nothing suspicious AND nothing verifiable is "not enough information",
+    // never "no red flags".
+    : identityChecked ? 'low' : 'inconclusive';
   const lang = input.lang === 'es' || input.lang === 'en' ? input.lang : claims.language === 'es' ? 'es' : 'en';
 
   return {
@@ -85,6 +91,7 @@ async function verify(input = {}, deps = {}) {
       high: { en: 'High risk: do not pay or hand over documents yet.', es: 'Riesgo alto: no pague ni entregue documentos todavía.' },
       medium: { en: 'Caution: verify these points before you pay.', es: 'Precaución: verifique estos puntos antes de pagar.' },
       low: { en: 'No red flags found in what you shared. This is not a guarantee — still verify before paying.', es: 'No encontramos señales de alerta en lo que compartió. No es una garantía: verifique antes de pagar.' },
+      inconclusive: { en: 'Not enough information — identity not verified. Add the person\'s name, the organization, or the phone number they gave you.', es: 'No hay suficiente información: la identidad no está verificada. Agregue el nombre de la persona, la organización o el teléfono que le dieron.' },
     }[risk],
     findings: findings.sort((a, b) => b.weight - a.weight),
     checks,
