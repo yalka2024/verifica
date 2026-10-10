@@ -148,3 +148,10 @@ test('a practitioner on DOJ\'s disciplined list is flagged with the official ord
   expect(f.source.url).toMatch(/^https:\/\/www\.justice\.gov\//);
   expect(r.risk).not.toBe('low');
 });
+
+test('"abogado de inmigración" is not a government claim', async () => {
+  const r = await verify({ text: 'Soy abogado de inmigración, puedo llevar su caso de asilo. Consulta 200 dólares.' }, noAi);
+  expect(ids(r)).not.toContain('government_impersonation');
+  const g = await verify({ text: 'Le llamamos de la oficina de inmigración. Pague hoy con tarjeta de regalo.' }, noAi);
+  expect(ids(g)).toContain('government_impersonation');
+});

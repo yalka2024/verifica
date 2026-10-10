@@ -36,7 +36,9 @@ const MONEY_RE = /\$\s?\d[\d,.]*|\d[\d,.]*\s?(?:d[oó]lares|dollars|usd)/i;
 const TITLE_RE = /notari[oa]( p[uú]blico)?|notary( public)?|abogad[oa]|attorney|lawyer|representante (legal )?acreditad[oa]|accredited representative|consultor(a)? de inmigraci[oó]n|immigration consultant/gi;
 // Claiming to BE the government, not merely mentioning it ("help with your
 // USCIS application" is not impersonation).
-const GOV_RE = /\b(?:from|de|del|officer|oficial|agente|agent|work(?:ing)? (?:with|for)|trabajo (?:con|para)|on behalf of|en nombre de|somos|we are|i am|soy)\s+(?:the\s+|la\s+|el\s+)?(?:uscis|ice|cbp|dhs|inmigraci[oó]n|migraci[oó]n|immigration (?:office|services)|embajada|embassy|gobierno|government)\b/i;
+// "abogado de inmigración" (an immigration lawyer) is NOT a government claim:
+// only agency names, or an immigration OFFICE/department/government.
+const GOV_RE = /\b(?:from|de|del|officer|oficial|agente|agent|work(?:ing)? (?:with|for)|trabajo (?:con|para)|on behalf of|en nombre de|somos|we are|i am|soy)\s+(?:the\s+|la\s+|el\s+)?(?:uscis|ice|cbp|dhs|(?:oficina|departamento|servicio) de (?:inmigraci[oó]n|migraci[oó]n)|immigration (?:office|services)|embajada|embassy|gobierno|government)\b/i;
 // Sentences that warn or deny ("we never guarantee", "nunca pague con tarjetas
 // de regalo") describe what a scam looks like; they are not the scam.
 const NEGATION_RE = /\b(?:never|nunca|jam[aá]s|do not|don't|does not|doesn't|we don't|no (?:pague|firme|firmamos|garantiz\w*|cobramos|aceptamos|acepte|entregue)|not (?:guarantee|accept|ask|charge))\b/i;
