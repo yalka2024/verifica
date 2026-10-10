@@ -4,6 +4,8 @@
 
 > *"Build an AI-powered solution that helps people recognize, prevent, verify, or respond to scams, impersonation, and fraud enabled by AI or modern technologies."*
 
+**Live demo: https://verifica-production-ba00.up.railway.app** · no account needed · try the example buttons
+
 Verifica lets someone who has been offered immigration help paste the WhatsApp message, ad, or flyer they received — in Spanish or English — and find out in seconds whether the person or organization behind it is real, using the U.S. Department of Justice's own records.
 
 ## The problem
@@ -24,6 +26,12 @@ The law is clear about who may help: **a licensed attorney, or a DOJ-accredited 
 4. **You get a clear verdict** — High risk / Caution / No red flags — with every reason in plain Spanish and English, each linked to the official source, plus the organization's real phone number from DOJ records.
 
 It catches the impersonation case too: a message that uses a **real** recognized organization's name with a phone number DOJ doesn't have on file gets flagged, and Verifica shows the official number to call instead.
+
+## Screenshots
+
+| A notario scam (Spanish) | A real organization, the wrong phone |
+|---|---|
+| ![High risk verdict for a notario WhatsApp message](docs/screenshots/notario-high-risk-desktop.png) | ![Caution: phone does not match DOJ records](docs/screenshots/impersonated-org-phone.png) |
 
 ## How the AI is used (and why it isn't a wrapper)
 
