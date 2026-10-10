@@ -41,7 +41,7 @@ describe('verdicts (deterministic, AI only extracts)', () => {
     expect(r.lang).toBe('es');
   });
   test('government impersonation demanding gift cards is high risk', async () => {
-    const r = await verify({ text: 'x' }, fakeAi({ ...empty, person_names: ['Officer Daniel Ruiz'], organization_names: ['USCIS'], claims_government_affiliation: true, payment: { requested: true, amount: '$450', methods: ['Google Play gift cards'] }, urgency: true }));
+    const r = await verify({ text: 'This is officer Daniel Ruiz from USCIS. Pay $450 today with Google Play gift cards or you will be deported.' }, fakeAi({ ...empty, person_names: ['Officer Daniel Ruiz'], organization_names: ['USCIS'], claims_government_affiliation: true, payment: { requested: true, amount: '$450', methods: ['Google Play gift cards'] }, urgency: true }));
     expect(r.risk).toBe('high');
     expect(ids(r)).toContain('government_impersonation');
     expect(r.checks.organizations).toEqual([]); // agencies are not looked up as nonprofits

@@ -80,10 +80,16 @@ function sanitize(raw) {
 // Union the AI result with the regex result: contact details and payment
 // methods the regex can see are never lost to a model omission.
 function merge(ai, rx) {
+  const affirmed = (list) => list.filter((s) => !NEGATION_RE.test(s));
   return {
     ...ai,
+    // The model also reads "we never guarantee" as a promise; drop negated items.
+    promises: affirmed(ai.promises),
+    document_requests: affirmed(ai.document_requests),
     claimed_titles: uniq([...ai.claimed_titles, ...rx.claimed_titles]),
-    claims_government_affiliation: ai.claims_government_affiliation || rx.claims_government_affiliation,
+    // Only an explicit claim to BE the government counts ("from USCIS",
+    // "officer", "de inmigración"), never a mention like "USCIS applications".
+    claims_government_affiliation: rx.claims_government_affiliation,
     phones: uniq([...ai.phones, ...rx.phones]), emails: uniq([...ai.emails, ...rx.emails]), websites: uniq([...ai.websites, ...rx.websites]),
     payment: { requested: ai.payment.requested || rx.payment.requested, amount: ai.payment.amount || rx.payment.amount, methods: uniq([...ai.payment.methods, ...rx.payment.methods]) },
   };
