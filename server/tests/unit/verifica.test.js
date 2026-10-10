@@ -131,3 +131,11 @@ describe('review fixes (2026-10-10)', () => {
     expect(r.score).toBeGreaterThan(0);
   });
 });
+
+test('negated promises from the model and a mere USCIS mention do not flag', async () => {
+  const text = 'We are a nonprofit. We never guarantee results. Never sign blank forms. We help with USCIS applications.';
+  const r = await verify({ text }, fakeAi({ ...empty, claims_government_affiliation: true, promises: ['We never guarantee results'], document_requests: ['Never sign blank forms'] }));
+  expect(ids(r)).not.toContain('guaranteed_result');
+  expect(ids(r)).not.toContain('government_impersonation');
+  expect(ids(r)).not.toContain('blank_forms_or_false_info');
+});
