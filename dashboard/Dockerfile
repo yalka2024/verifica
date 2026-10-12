@@ -1,7 +1,7 @@
 # Multi-stage Dockerfile for Verifica dashboard (Vite build)
 # Build → static assets served by nginx, dropping privileges.
 
-FROM node:22-bookworm-slim AS builder
+FROM node:26-bookworm-slim AS builder
 WORKDIR /app
 ENV NODE_ENV=production NPM_CONFIG_FUND=false NPM_CONFIG_AUDIT=false
 COPY package*.json ./
