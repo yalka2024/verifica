@@ -1,6 +1,6 @@
 # ─── Multi-stage build: single-container deploy (server + dashboard) ─────
 # Stage 1: build the React dashboard
-FROM node:22-bookworm-slim AS dashboard-build
+FROM node:26-bookworm-slim AS dashboard-build
 WORKDIR /app/dashboard
 COPY dashboard/package*.json ./
 # Use `npm ci` for a reproducible install when a lockfile is committed; fall
@@ -14,7 +14,7 @@ ENV REACT_APP_API_URL=$REACT_APP_API_URL
 RUN npm run build
 
 # Stage 2: install server deps + prisma generate
-FROM node:22-bookworm-slim AS server-build
+FROM node:26-bookworm-slim AS server-build
 WORKDIR /app/server
 # OpenSSL is needed by Prisma's query engine on bookworm-slim; python3/make/g++
 # let node-gyp compile native deps (better-sqlite3) when no prebuilt binary fits.
@@ -31,7 +31,7 @@ COPY server/ ./
 RUN DATABASE_URL=postgresql://build:build@localhost:5432/build npx prisma generate
 
 # Stage 3: runtime image
-FROM node:22-bookworm-slim AS runtime
+FROM node:26-bookworm-slim AS runtime
 ENV NODE_ENV=production \
     SERVE_DASHBOARD=1 \
     PORT=8080
